@@ -1,0 +1,42 @@
+{% extends 'admin/adminhomepageindex.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/MyApp/new_requests_post/">
+    {% csrf_token %}
+{#  <table class="table table-bordered" style="color: var(--heading-color)">#}
+{#    <tr>#}
+{#      <td><input class="form-control" type="text" required name="textfield" id="textfield" /></td>#}
+{#      <td><input type="submit" name="button" id="button" class="btn btn-success" value="Search" /></td>#}
+{#    </tr>#}
+{#  </table>#}
+  <table class="table table-bordered" style="color: var(--heading-color)">
+    <tr>
+      <th scope="col">SLNO</th>
+      <th scope="col">NAME</th>
+      <th scope="col">AGE</th>
+      <th scope="col">GENDER</th>
+      <th scope="col">ADDRESS</th>
+      <th scope="col">EMAIL</th>
+      <th scope="col">PHONE</th>
+      <th scope="col">PHOTO</th>
+      <th scope="col">DEPARTMENT</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.Name }}</td>
+      <td>&nbsp;{{ i.Age }}</td>
+      <td>{{ i.Gender }}</td>
+      <td>{{ i.Place }}<br>{{ i.Post }}<br>{{ i.District }}<br>{{ i.State }}</td>
+      <td>&nbsp;{{ i.Email }}</td>
+      <td>&nbsp;{{ i.Phone }}</td>
+      <td>&nbsp;<img src=" {{ i.Photo }}" height="100px" width="100px"></td>
+      <td>&nbsp;{{ i.DEPARTMENT.DepartmentName }}</td>
+      <td><a href="/MyApp/approve_staff/{{ i.LOGIN.id }}"  class="btn btn-success">Approve</a></td>
+      <td><a href="/MyApp/reject_staff/{{ i.LOGIN.id }}"  class="btn btn-danger">Reject</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+</form>
+{% endblock %}

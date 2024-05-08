@@ -1,0 +1,32 @@
+{% extends 'Hod/hodhomepageindex.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/MyApp/hod_add_services_post/" enctype="multipart/form-data">
+    {% csrf_token %}
+  <table class="table table-bordered" style="color: var(--heading-color)">
+    <tr>
+      <th>CourseName</th>
+      <td><input type="text" name="textfield" class="form-control" pattern="[a-z A-Z]+" id="textfield" required/></td>
+    </tr>
+    <tr>
+      <th>FromDate</th>
+      <td><input type="date" class="form-control" name="frmdate" required></td>
+    </tr>
+    <tr>
+      <th>ToDate</th>
+      <td><input type="date" class="form-control" name="todate" required></td>
+    </tr>
+      <tr>
+      <th>Duration</th>
+      <td><input type="text" name="textfield3" class="form-control" id="textfield3" required/></td>
+    </tr>
+      <tr>
+          <th>Certificate</th>
+          <td><input type="file" name="certificate" class="form-control" accept=".jpg, .jpeg, .pdf" required/> </td>
+      </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" name="button" id="button" value="Submit" class="btn btn-success"/></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}

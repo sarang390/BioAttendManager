@@ -1,0 +1,30 @@
+{% extends 'admin/adminhomepageindex.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/MyApp/edit_hod_post/">
+    {% csrf_token %}
+  <table class="table table-bordered" style="color: var(--heading-color)">
+    <tr>
+      <td>Staff</td>
+      <td><select name="select" class="form-control" id="select">
+          {% for i in data2 %}
+          <option value="{{ i.id }}"{% if data.STAFF.id == i.id %}selected{% endif %} >{{ i.Name }}</option>
+          {% endfor %}
+      </select></td>
+    </tr>
+    <tr>
+      <td>Department</td>
+      <td><select name="select2" class="form-control" id="select2">
+          {% for i in data1 %}
+          <option value="{{ i.id }}"{% if data.DEPARTMENT.id == i.id %}selected{% endif %} >{{ i.DepartmentName }}</option>
+          {% endfor %}
+      </select></td>
+    </tr>
+  <input type="hidden" value="{{ data.id }}" name="id">
+    <tr>
+      <td colspan="2"><div align="center">
+        <input type="submit" class="btn btn-success" name="button" id="button" value="Submit" />
+      </div></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}

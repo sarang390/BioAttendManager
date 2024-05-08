@@ -1,0 +1,76 @@
+{% extends 'Hod/hodhomepageindex.html' %}
+{% block body %}
+<form action="/MyApp/edit_profile_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+  <table class="table table-bordered" style="color: var(--heading-color)">
+    <tr>
+      <td>Name</td>
+      <td><input type="text" value="{{ data.Name }}" required class="form-control" name="textfield" id="textfield" pattern="[a-z A-Z]+" /></td>
+    </tr>
+    <tr>
+      <td>Age</td>
+      <td><input type="text" value="{{ data.Age }}" required class="form-control" name="textfield2" id="textfield2" pattern="[2-9][0-9]" min="18" /></td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td><p>
+        <label>
+          <input type="radio"{% if data.Gender == 'Male' %}checked{% endif %} name="RadioGroup1" value="Male" id="RadioGroup1_0" />
+          Male</label>
+        <br />
+        <label>
+          <input type="radio" {% if data.Gender == 'Female' %}checked{% endif %} name="RadioGroup1" value="Female" id="RadioGroup1_1" />
+          Female</label>
+        <br />
+      </p></td>
+    </tr>
+    <tr>
+      <td>Place</td>
+      <td><input type="text" value="{{ data.Place }}" required class="form-control" name="textfield3" id="textfield3" pattern="[a-z A-Z]+" /></td>
+    </tr>
+    <tr>
+      <td>Pin</td>
+      <td><input type="text" value="{{ data.Post }}" required class="form-control" name="textfield4" id="textfield4" pattern="[6][0-9]{5}" /></td>
+    </tr>
+    <tr>
+      <td>District</td>
+      <td><input type="text" value="{{ data.District }}" required class="form-control" name="textfield5" id="textfield5" pattern="[a-z A-Z]+" /></td>
+    </tr>
+    <tr>
+      <td>State</td>
+      <td><input type="text" value="{{ data.State }}" required class="form-control" name="textfield6" id="textfield6" pattern="[a-z A-Z]+" /></td>
+    </tr>
+    <tr>
+      <td>email</td>
+      <td><input type="email" value="{{ data.Email }}" required class="form-control" name="textfield7" id="textfield7" /></td>
+    </tr>
+    <tr>
+      <td>Phone</td>
+      <td>
+
+          <input type="text" value="{{ data.Phone }}" required class="form-control" name="textfield8" id="textfield8" pattern="[6789][0-9]{9}" /></td>
+    </tr>
+  <input type="hidden" value="{{ data.LOGIN.id }}" name="id">
+    <tr>
+      <td>Photo</td>
+      <td>
+          <img src="{{ data.Photo }}" height="100px" width="100px"><br>
+          <input type="file" value="{{ data.Photo }}"  name="fileField" id="fileField" /></td>
+    </tr>
+    <tr>
+      <td>Department</td>
+      <td><select name="select" class="form-control" id="select">
+{#      <option value="{{ data.DEPARTMENT.id }}" selected>{{ data.DEPARTMENT.DepartmentName }}</option>#}
+          {% for i in data2 %}
+          <option value="{{ i.id }}" {% if i.id == data.DEPARTMENT.id %} selected{% endif %}>{{ i.DepartmentName }}</option>
+          {% endfor %}
+      </select></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div align="center">
+        <input type="submit" class="btn btn-success" name="button" id="button" value="Submit" />
+      </div></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}

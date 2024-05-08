@@ -1,0 +1,61 @@
+{% extends "Hod/hodhomepageindex.html" %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+    {% csrf_token %}
+  <table class="table table-bordered" style="color: var(--font-color);">
+    <tr>
+      <td>Name</td>
+      <td>{{ data.Name }}</td>
+    </tr>
+    <tr>
+      <td>Age</td>
+      <td>&nbsp;{{ data.Age }}</td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td><p>&nbsp;{{ data.Gender }}</p></td>
+    </tr>
+    <tr>
+      <td>Place</td>
+      <td>&nbsp;{{ data.Place }}</td>
+    </tr>
+    <tr>
+      <td>Pin</td>
+      <td>&nbsp;{{ data.Post }}</td>
+    </tr>
+    <tr>
+      <td>District</td>
+      <td>&nbsp;{{ data.District }}</td>
+    </tr>
+    <tr>
+      <td>State</td>
+      <td>&nbsp;{{ data.State }}</td>
+    </tr>
+    <tr>
+      <td>email</td>
+      <td>&nbsp;{{ data.Email }}</td>
+    </tr>
+    <tr>
+      <td>Phone</td>
+      <td>&nbsp;{{ data.Phone }}</td>
+    </tr>
+    <tr>
+      <td>Photo</td>
+      <td>&nbsp;<img src="{{ data.Photo }}" height="100px" width="100px"> </td>
+    </tr>
+    <tr>
+      <td>Department</td>
+      <td>&nbsp;{{ data.DEPARTMENT.DepartmentName }}</td>
+    </tr>
+      <tr>
+      <td colspan="2"><div align="center">
+          <a href="/MyApp/edit_profile/#new"class="btn btn-success" >Edit</a>
+{#        <input type="submit" class="btn btn-success" name="button" id="button" value="Edit " />#}
+      </div></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

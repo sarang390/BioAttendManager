@@ -1,0 +1,18 @@
+{% extends 'admin/adminhomepageindex.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/MyApp/edit_department_post/">
+    {% csrf_token %}
+    <td><input type="hidden" name="id" value="{{ data.id }}"></td>
+  <table class="table table-bordered" style="color: var(--heading-color)">
+    <tr>
+      <td>Department Name</td>
+      <td><input type="text" class="form-control" name="textfield" id="textfield" value="{{ data.DepartmentName }}"/></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div align="center">
+        <input type="submit" class="btn btn-success" name="button" id="button" value="Submit" />
+      </div></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}

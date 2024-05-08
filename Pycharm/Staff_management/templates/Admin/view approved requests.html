@@ -1,0 +1,44 @@
+{% extends 'admin/adminhomepageindex.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/MyApp/view_approved_requests_post/" enctype="multipart/form-data">
+    {% csrf_token %}
+{#  <table class="table table-bordered" style="color: var(--heading-color)">#}
+{#    <tr>#}
+{#      <td>from</td>#}
+{#      <td><input type="date" required class="form-control" name="textfield" id="textfield" /></td>#}
+{#      <td>to</td>#}
+{#      <td><input type="date" required class="form-control" name="textfield2" id="textfield2" /></td>#}
+{#      <td><input type="submit" class="btn btn-success" name="button" id="button" value="Search" /></td>#}
+{#    </tr>#}
+{#  </table>#}
+  <table class="table table-bordered" style="color: var(--heading-color)">
+    <tr>
+      <th width="54" scope="col">SLNO</th>
+      <th width="52" scope="col">DATE</th>
+      <th width="52" scope="col">From</th>
+      <th width="52" scope="col">To</th>
+      <th width="59" scope="col">NAME</th>
+      <th width="73" scope="col">DETAILS</th>
+      <th width="73" scope="col">LEAVE TYPE</th>
+      <th width="73" scope="col">LEAVE STATUS</th>
+      <th width="73" scope="col">CERTIFICATE</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.Date }}</td>
+      <td>&nbsp;{{ i.FromDate }}</td>
+      <td>&nbsp;{{ i.ToDate }}</td>
+      <td>&nbsp;{{ i.name }}</td>
+      <td>&nbsp;{{ i.Description }}</td>
+      <td>&nbsp;{{ i.LeaveType }}</td>
+      <td>&nbsp;{{ i.Status }}</td>
+{#        <td {% if i.Certificate == 'No Certificate' %}> not needed{% else %}<a href="{{ i.Certificate }}" class="btn btn-success">view</a>{% endif %}</td>#}
+        <td><a href="{{ i.Certificate }}" class="btn btn-success">view</a></td>
+
+    </tr>
+      {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+</form>
+{% endblock %}

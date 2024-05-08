@@ -1,0 +1,41 @@
+{% extends "Hod/hodhomepageindex.html" %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/MyApp/send_leave_request_post/" enctype="multipart/form-data">
+    {% csrf_token %}
+  <table width="200" border="1" class="table table-bordered" style="color: var(--font-color);">
+      <tr>
+      <th>Leave Type</th>
+      <td><select name="leavetype" class="form-control" id="select" required>
+          <option>Medical Leave</option>
+          <option>Casual Leave</option>
+          <option>Duty Leave</option>
+          <option>Compensation off</option>
+      </select>
+    </tr>
+      <tr>
+          <th>Certificate</th>
+          <td><input type="file" name="certificate" class="form-control" accept=".jpg, .jpeg, .pdf" required/> </td>
+      </tr>
+      <tr>
+      <th>From</th>
+      <td><input type="date" class="form-control" name="frmdate" required></td>
+    </tr>
+      <tr>
+      <th>To</th>
+      <td><input type="date" class="form-control" name="todate" required></td>
+    </tr>
+    <tr>
+      <th>Details</th>
+      <td><textarea name="textarea" class="form-control" id="textarea" cols="45" rows="5" required></textarea></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div align="center">
+        <input type="submit" name="button" id="button" class="btn btn-success" value="Send" />
+      </div></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

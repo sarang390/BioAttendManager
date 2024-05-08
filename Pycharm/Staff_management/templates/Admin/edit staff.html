@@ -1,0 +1,72 @@
+{% extends 'admin/adminhomepageindex.html' %}
+{% block body %}
+<form action="/MyApp/edit_staff_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+  <table class="table table-bordered" style="color: var(--heading-color)">
+    <tr>
+      <td>Name</td>
+        <input type="hidden" name="id" value="{{ data.id }}">
+      <td><input type="text" required class="form-control" value="{{ data.Name }}" name="textfield" id="textfield" /></td>
+    </tr>
+    <tr>
+      <td>Age</td>
+      <td><input type="text" required class="form-control" value="{{ data.Age }}" name="textfield2" id="textfield2" /></td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td><p>
+        <label>
+          <input type="radio" {% if data.Gender == "Male" %}checked{% endif %} name="RadioGroup1" value="Male" id="RadioGroup1_0" />
+          Male</label>
+        <br />
+        <label>
+          <input type="radio" {% if data.Gender == "Female" %}checked{% endif %} name="RadioGroup1" value="Female" id="RadioGroup1_1" />
+          Female</label>
+        <br />
+      </p></td>
+    </tr>
+    <tr>
+      <td>Place</td>
+      <td><input type="text" required class="form-control" value="{{ data.Place }}" name="textfield3" id="textfield3" /></td>
+    </tr>
+    <tr>
+      <td>Post</td>
+      <td><input type="text" required class="form-control" value="{{ data.Post }}" name="textfield4" id="textfield4" /></td>
+    </tr>
+    <tr>
+      <td>District</td>
+      <td><input type="text" required class="form-control" value="{{ data.District }}" name="textfield5" id="textfield5" /></td>
+    </tr>
+    <tr>
+      <td>State</td>
+      <td><input type="text" required class="form-control" value="{{ data.State }}" name="textfield6" id="textfield6" /></td>
+    </tr>
+    <tr>
+      <td>email</td>
+      <td><input type="text" required class="form-control" value="{{ data.Email }}" name="textfield7" id="textfield7" /></td>
+    </tr>
+    <tr>
+      <td>Phone</td>
+      <td><input type="text" required class="form-control" value="{{ data.Phone }}" name="textfield8" id="textfield8" /></td>
+    </tr>
+    <tr>
+      <td>Photo</td>
+      <td><img src="{{ data.Photo }}" height="100px" width="100px"><br>
+          <input type="file" value="{{ data.Photo }}" name="fileField" id="fileField" /></td>
+    </tr>
+    <tr>
+      <td>Department</td>
+      <td><select name="select" class="form-control" id="select">
+          {% for i in data1 %}
+          <option value="{{ i.id }}"{% if data.DEPARTMENT.id == i.id %}selected{% endif %} >{{ i.DepartmentName }}</option>
+          {% endfor %}
+      </select></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div align="center">
+        <input type="submit" class="btn btn-success" name="button" id="button" value="Submit" />
+      </div></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}

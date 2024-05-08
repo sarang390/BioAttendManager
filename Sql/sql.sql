@@ -1,0 +1,1 @@
+INSERT INTO `myapp_leave` (`Date`,`FromDate`,`ToDate`,`Status`,`Description`,`LeaveType`,`LOGIN_id`,`Certificate`) VALUES (CURDATE(),CURDATE(),CURDATE(),'approved','Late','Casual Leave','"+s+"','No Certificate')

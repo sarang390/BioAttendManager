@@ -1,0 +1,24 @@
+{% extends 'Hod/hodhomepageindex.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/MyApp/hod_view_my_services_post/" enctype="multipart/form-data">
+    {% csrf_token %}
+  <table class="table table-bordered" style="color: var(--heading-color)">
+    <tr>
+        <th scope="col">ServiceName</th>
+        <th scope="col">FromDate</th>
+      <th scope="col">ToDate</th>
+      <th scope="col">Duration</th>
+      <th scope="col">Certificates</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ i.ServiceName }}</td>
+        <td>&nbsp;{{ i.FromDate }}</td>
+        <td>&nbsp;{{ i.ToDate }}</td>
+        <td>&nbsp;{{ i.Duration }}</td>
+        <td><a href="{{ i.Certificate }}" class="btn btn-success">view</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+{% endblock %}

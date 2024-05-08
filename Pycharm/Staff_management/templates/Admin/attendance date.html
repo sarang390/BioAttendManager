@@ -1,0 +1,43 @@
+{% extends 'admin/adminhomepageindex.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/MyApp/attendance_date_post/">
+    {% csrf_token %}
+  <table class="pull-left">
+      <tr>
+      <td>Choose Date</td>
+
+
+          <td><input type="date" name="date" class="form-control" required></td>
+          <td><input type="submit" class="btn btn-success" name="button" id="button" value="Search" /></td>
+      </tr>
+  </table>
+<br>
+<br>
+
+<table class="table table-bordered" >
+    <tr>
+      <th scope="col">SLNO</th>
+        <th scope="col">STAFF NAME</th>
+        <th scope="col">CHECKIN</th>
+      <th scope="col">CHECKOUT</th>
+      <th scope="col">CHECKIN</th>
+      <th scope="col">CHECKOUT</th>
+    </tr>
+      {% for j in data %}
+    <tr>
+
+        <td>{{ forloop.counter }}</td>
+        <td>{{ j.0.Name }}</td>
+        <td>{{ j.1 }}</td>
+        <td>{{ j.2 }}</td>
+        <td>{{ j.3 }}</td>
+        <td>{{ j.4 }}</td>
+
+
+    </tr>
+      {% endfor %}
+  </table>
+
+
+</form>
+{% endblock %}

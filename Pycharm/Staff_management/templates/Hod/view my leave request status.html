@@ -1,0 +1,41 @@
+{% extends "Hod/hodhomepageindex.html" %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/MyApp/hod_view_my_leave_request_status_post/" enctype="multipart/form-data">
+    {% csrf_token %}
+{#  <table width="200" border="1" class="table table-bordered" style="color: var(--font-color);">#}
+{#    <tr>#}
+{#      <td>from</td>#}
+{#      <td><input type="date" class="form-control" name="textfield" id="textfield" required /></td>#}
+{#      <td>to</td>#}
+{#      <td><input type="date" class="form-control" name="textfield2" id="textfield2" required /></td>#}
+{#      <td><input type="submit" class="btn btn-success" name="button" id="button" value="Search" /></td>#}
+{#    </tr>#}
+{#  </table>#}
+  <table width="463" border="1" class="table table-bordered" style="color: var(--font-color);" >
+    <tr>
+      <th>SLNO</th>
+      <th>DATE</th>
+      <th>FromDate</th>
+      <th>ToDate</th>
+        <th>DESCRIPTION</th>
+      <th>LEAVE TYPE</th>
+      <th>LEAVE STATUS</th>
+      <th>CERTIFICATE</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.Date }}</td>
+      <td>&nbsp;{{ i.FromDate }}</td>
+      <td>&nbsp;{{ i.ToDate }}</td>
+      <td>{{ i.Description }}</td>
+      <td>{{ i.LeaveType }}</td>
+      <td>{{ i.Status }}</td>
+        <td><a href="{{ i.Certificate }}" class="btn btn-success">view</a></td>
+      {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+</form>
+</body>
+{% endblock %}
